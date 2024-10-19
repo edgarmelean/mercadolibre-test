@@ -118,7 +118,7 @@ def exportar_a_csv(productos):
 
 # Paso 8: Ejecutar el servidor Flask
 if __name__ == "__main__":
-    redirect_uri = "https://tu-aplicacion-en-render.onrender.com/callback"  # Cambia esto por tu URL de Render
+    redirect_uri = "https://mercadolibre-test.onrender.com/callback"  # Cambia esto por tu URL de Render
     # Inicia el proceso de autorización
     obtener_codigo_autorizacion(redirect_uri)
 
