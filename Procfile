@@ -1,0 +1,1 @@
+web: python script_mercadolibre.py
