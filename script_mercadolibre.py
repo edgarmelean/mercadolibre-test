@@ -17,7 +17,7 @@ def home():
 @app.route('/login')
 def login():
     auth_url = (
-        f"https://auth.mercadolibre.com.ar/authorization"
+        f"https://auth.mercadolibre.cl/authorization"
         f"?response_type=code"
         f"&client_id={CLIENT_ID}"
         f"&redirect_uri={REDIRECT_URI}"
