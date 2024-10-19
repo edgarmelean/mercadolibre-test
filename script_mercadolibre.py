@@ -13,7 +13,7 @@ user_id = None
 app = Flask(__name__)
 
 # Reemplaza con tu URL de Render, asegúrate de que esté configurada correctamente
-REDIRECT_URI = 'https://nombre-de-tu-aplicacion.onrender.com/callback'  # Cambia esto por tu URL de Render
+REDIRECT_URI = 'https://mercadolibre-test.onrender.com/callback'  # Cambia esto por tu URL de Render
 
 # Paso 1: Generar la URL de autorización y abrirla en el navegador
 def obtener_codigo_autorizacion():
