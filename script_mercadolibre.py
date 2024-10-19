@@ -2,7 +2,6 @@ from flask import Flask, request
 import webbrowser
 import requests
 import csv
-import os
 
 # Variables del usuario
 client_id = "5133875641332998"  # Reemplaza con tu App ID
@@ -12,16 +11,13 @@ user_id = None
 
 app = Flask(__name__)
 
-# Reemplaza con tu URL de Render, asegúrate de que esté configurada correctamente
-REDIRECT_URI = 'https://mercadolibre-test.onrender.com/callback'  # Cambia esto por tu URL de Render
-
 # Paso 1: Generar la URL de autorización y abrirla en el navegador
-def obtener_codigo_autorizacion():
+def obtener_codigo_autorizacion(redirect_uri):
     auth_url = (
         f"https://auth.mercadolibre.cl/authorization"  # Cambiar ".com.ar" por ".cl"
         f"?response_type=code"
         f"&client_id={client_id}"
-        f"&redirect_uri={REDIRECT_URI}"
+        f"&redirect_uri={redirect_uri}"
     )
     webbrowser.open(auth_url)  # Abre la URL de autorización en el navegador
 
@@ -48,7 +44,7 @@ def obtener_access_token(authorization_code):
         "client_id": client_id,
         "client_secret": client_secret,
         "code": authorization_code,
-        "redirect_uri": REDIRECT_URI
+        "redirect_uri": redirect_uri
     }
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     
@@ -122,8 +118,9 @@ def exportar_a_csv(productos):
 
 # Paso 8: Ejecutar el servidor Flask
 if __name__ == "__main__":
+    redirect_uri = "https://tu-aplicacion-en-render.onrender.com/callback"  # Cambia esto por tu URL de Render
     # Inicia el proceso de autorización
-    obtener_codigo_autorizacion()
+    obtener_codigo_autorizacion(redirect_uri)
 
     # Inicia el servidor Flask
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8000)))  # Utiliza el puerto asignado por Render
+    app.run(host='0.0.0.0', port=8000)
